@@ -40,7 +40,7 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
     - name: Find
-      run |
+      run: |
           find . -name "*apk"
           ls -l app/build/outputs/apk/
           ls -l app/build/outputs/apk/*
