@@ -39,6 +39,11 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
+    - name: Find
+      run |
+          find . -name "*apk"
+          ls -l app/build/outputs/apk/
+          ls -l app/build/outputs/apk/*
     - name: Upload debug APK
       uses: actions/upload-artifact@v4
       with:
