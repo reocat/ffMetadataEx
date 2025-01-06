@@ -29,6 +29,12 @@ jobs:
       uses: gradle/actions/setup-gradle@v4
       with: 
         cache-cleanup: on-success
+    - name: Set up Android SDK
+      uses: android-actions/setup-android@v2
+    - name: Accept SDK Licenses
+      run: yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
+    - name: Fetch prebuilts
+      run: git clone https://github.com/mikooomich/ffmpeg-android-maker-prebuilt app/src/main/cpp/ffmpeg-android-maker -j$(nproc --all) --depth=1
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
